@@ -2,9 +2,3 @@
 <input type="text" [(ngModel)]="titulo" (ngModelChange)="log()">
 <p>{{titulo}}</p>
 <button (click)="disabled=!disabled">Cambiar estado</button>
-
-
-<input type="text" [(ngModel)]="test" (ngModelChange)="log2()">
-<button (click)="test='Click test'">Cambiar estado</button>
-<button (click)="log2()">Log</button>
-<p>{{ test }}</p>
