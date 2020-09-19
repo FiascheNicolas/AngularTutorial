@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Host } from '@angular/core';
+import { AppComponent } from '../app/app.component';
 
 @Component({
   selector: 'app-user',
@@ -9,11 +10,20 @@ export class UserComponent{
 
   @Input('data') user: any
 
-  @Output() borrar = new EventEmitter<number>()
+  // @Output() borrar = new EventEmitter<number>()
 
-  constructor() { }
+  constructor(
+    @Host() private _app: AppComponent
+  ) {
+    console.log(this._app)
+  }
 
-  BorrarUsuario(id: number){
-    this.borrar.emit(id)
+  //Forma de borrar usuarios de la lista sin el uso de @Host, usando @Output.
+  // BorrarUsuario(id: number){
+  //   this.borrar.emit(id)
+  // }
+
+   BorrarUsuario(id: number){
+    this._app.usuarios = this._app.usuarios.filter(usuario => usuario.id != id)
   }
 }
