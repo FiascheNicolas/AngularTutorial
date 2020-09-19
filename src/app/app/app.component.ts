@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  //Parte 7
-  usuarios = []
+  signupForm: FormGroup
   
-  constructor( private _http: HttpClient ){}
+  constructor( 
+    private _builder: FormBuilder
+   ){
 
-  ngOnInit(){
-    this._http.get('https://jsonplaceholder.typicode.com/users').subscribe((datos: any[]) => this.usuarios = datos)    
-  }
+    this.signupForm = this._builder.group({
+      nombre: [''],
+      usuario:  ['',Validators.required],
+      email:  ['',Validators.compose([Validators.email, Validators.required])],
+      clave: ['',Validators.required] 
+    })
 
-  //Si se usara el metodo de @Output para borrar usuarios, se deberia usar esta funcion
-  // borrarUsuario(id: number){
-  //   this.usuarios = this.usuarios.filter(usuario => usuario.id != id)
-  // }
+   }
+
+   enviar(values){
+     console.log(values)
+   }
+
 }
