@@ -2,19 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app/app.component';
-import { UserComponent } from './user/user.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { MiDirectivaDirective } from './directives/mi-directiva.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
+    MiDirectivaDirective,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

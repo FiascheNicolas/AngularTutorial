@@ -1,19 +1,2 @@
-<form [formGroup]="signupForm" (ngSubmit)="enviar(signupForm.value)">
+<span MiDirectiva color="blue" [underline]="true">{{title}}</span>
 
-    <label>Nombre</label>
-    <input formControlName="nombre" type="text">
-    <br/>
-    <label>Usuario</label>
-    <input formControlName="usuario" type="text">
-    <br/>
-    <label>Email</label>
-    <input formControlName="email" type="text">
-    
-    <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched">Es necesario introducir email.</div>
-
-    <br/>
-    <label>Password</label>
-    <input formControlName="clave" type="password">
-    <br/>
-    <button [disabled]="signupForm.invalid" type="submit">Registrarse</button>
-</form>
